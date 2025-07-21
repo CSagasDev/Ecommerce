@@ -1,4 +1,4 @@
-Inicio de proyecto Ecomerce para aprendizaje
+Inicio de proyecto Ecommerce para aprendizaje
 
 Usando
 

@@ -3,27 +3,35 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Users } from './entities/user.entity';
+import { User } from './entities/user.entity';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(Users) private readonly userRepository: Repository<Users>,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<Users> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
     try {
       const newUser = this.userRepository.create(createUserDto);
+      newUser.password = await bcrypt.hash(createUserDto.password, 10);
       return await this.userRepository.save(newUser);
     } catch (error) {
+      const existingUser = await this.userRepository.findOneBy({
+        email: createUserDto.email,
+      });
+      if (existingUser) {
+        throw new BadRequestException('El correo ya está en uso');
+      }
       console.error('Error al crear usuario:', error);
       throw new BadRequestException(
-        'No se pudo crear el usuario. Revise los datos.',
+        'No se pudo crear el usuario. Valide los datos.',
       );
     }
   }
 
-  async findAll(): Promise<Users[]> {
+  async findAll(): Promise<User[]> {
     try {
       return await this.userRepository.find();
     } catch (error) {
@@ -32,20 +40,20 @@ export class UsersService {
     }
   }
 
-  async findOneByUser(user: string): Promise<Users> {
+  async findOneByEmail(email: string): Promise<User> {
     try {
-      const usuario = await this.userRepository.findOneBy({ user });
-      if (!usuario) {
+      const tempUser = await this.userRepository.findOneBy({ email });
+      if (!tempUser) {
         throw new BadRequestException('Usuario no encontrado');
       }
-      return usuario;
+      return tempUser;
     } catch (error) {
       console.error('Error al encontrar usuario:', error);
       throw new BadRequestException('Usuario no encontrado');
     }
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto): Promise<Users> {
+  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     try {
       const user = await this.userRepository.findOneBy({ id });
       if (!user) {

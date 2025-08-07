@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2>Lista de Usuarios</h2>
+
+  <div *ngIf="user.length > 0; else noUsers">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre de Usuario</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of user">
+          <td>{{ user.id }}</td>
+          <td>{{ user.user }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noUsers>
+    <p>No se encontraron usuarios.</p>
+  </ng-template>
+</div>

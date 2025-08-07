@@ -1,0 +1,155 @@
+/* Reset general */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo general */
+body {
+    background: linear-gradient(to right, #43cea2, #185a9d);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Tarjeta de registro */
+.register-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+/* Logo opcional */
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Título */
+.register-card h2 {
+    margin-bottom: 24px;
+    color: #222;
+    font-weight: 600;
+}
+
+/* Formulario */
+form {
+    width: 100%;
+}
+
+/* Grupos del formulario */
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #43cea2;
+    box-shadow: 0 0 0 2px rgba(67, 206, 162, 0.2);
+}
+
+/* Botón de envío */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px 0;
+    background-color: #185a9d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #134d86;
+    transform: translateY(-1px);
+}
+
+button[type="submit"]:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Texto inferior */
+.login-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-text a {
+    color: #185a9d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.login-text a:hover {
+    color: #0f3d6c;
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+    .register-card {
+        padding: 30px 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,152 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Tarjeta de login */
+.login-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Logo (opcional) */
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* Título */
+.login-card h2 {
+    margin-bottom: 24px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Formulario */
+form {
+    width: 100%;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    font-family: inherit;
+    /* <-- Esta línea mantiene la fuente del contenedor */
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4e54c8;
+    box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.2);
+}
+
+/* Botón */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px 0;
+    background-color: #4e54c8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #3d43b3;
+    transform: translateY(-1px);
+}
+
+button[type="submit"]:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Texto de registro */
+.register-text {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.register-text a {
+    color: #4e54c8;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.register-text a:hover {
+    color: #3d43b3;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        font-size: 14px;
+    }
+
+    button[type="submit"] {
+        font-size: 15px;
+    }
+}

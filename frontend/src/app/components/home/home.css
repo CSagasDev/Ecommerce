@@ -1,0 +1,248 @@
+/* ===== Base: misma tipografía/look que login ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* ===== Contenedor principal (card grande) ===== */
+.catalog {
+    width: 100%;
+    max-width: 1500px;
+    /* antes 1200px; súbelo si quieres aún más */
+    margin: 48px auto;
+    /* centra (auto a los lados) en vez de 16px */
+    padding: 28px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.catalog h2 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+/* ===== Grid de cards ===== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+/* ===== Card ===== */
+.card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Media (imagen / placeholder) */
+.card-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #f3f4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder {
+    color: #6b6fe3;
+    font-weight: 700;
+    opacity: .7;
+}
+
+/* Badge de stock */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #10b981;
+    /* verde */
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+}
+
+.badge.badge-out {
+    background: #ef4444;
+}
+
+/* rojo para agotado */
+
+/* Cuerpo */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.title {
+    font-size: 16px;
+    line-height: 1.25;
+    color: #1f2937;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* 2 líneas */
+    -webkit-box-orient: vertical;
+}
+
+.price {
+    color: #2b2e6b;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* Categoría como etiqueta */
+.category {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2b2e6b;
+    background: #f3f4ff;
+    border: 1px solid #e2e3ff;
+    border-radius: 999px;
+}
+
+/* Descripción truncada */
+.desc {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.35;
+    min-height: 2.7em;
+    /* ~2 líneas */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* 2 líneas */
+    -webkit-box-orient: vertical;
+}
+
+/* Acciones */
+.card-actions {
+    margin-top: 6px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background-color .2s ease;
+    font-family: inherit;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Botón primario (mismo tono que login) */
+.btn-primary {
+    background-color: #4e54c8;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(78, 84, 200, .35);
+}
+
+.btn-primary:hover {
+    background-color: #3d43b3;
+}
+
+/* Botón ghost */
+.btn-ghost {
+    background: transparent;
+    color: #4e54c8;
+    border: 1px solid #d6d8ff;
+}
+
+.btn-ghost:hover {
+    background: #f3f4ff;
+}
+
+/* Estado vacío */
+.no-data {
+    margin-top: 8px;
+    padding: 12px 14px;
+    color: #fff;
+    background-color: #6b6fe3;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive ajustes menores */
+@media (max-width: 480px) {
+    .catalog {
+        padding: 20px;
+        margin: 28px 12px;
+    }
+
+    .cards {
+        gap: 14px;
+    }
+
+    .title {
+        -webkit-line-clamp: 2;
+    }
+}

@@ -1,27 +1,51 @@
-<div class="container mt-4">
-  <h2>Lista de Usuarios</h2>
+<div class="catalog">
+  <h2>Productos</h2>
 
-  <div *ngIf="user.length > 0; else noUsers">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre de Usuario</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of user">
-          <td>{{ user.id }}</td>
-          <td>{{ user.user }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.password }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div *ngIf="products.length > 0; else noProduct" class="cards">
+    <article class="card" *ngFor="let p of products">
+      <div class="card-media">
+        <img
+          *ngIf="getProductImage(p) as imgSrc; else noImg"
+          [src]="imgSrc"
+          [alt]="p.name"
+          loading="lazy"
+        />
+        <ng-template #noImg>
+          <div class="placeholder">Sin imagen</div>
+        </ng-template>
+
+        <span class="badge" [class.badge-out]="p.stock === 0">
+          {{ p.stock > 0 ? ('Stock: ' + p.stock) : 'Agotado' }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="title" [title]="p.name">{{ p.name }}</h3>
+          <div class="price">
+            {{ (p.price) | currency:'GTQ':'symbol':'1.2-2' }}
+          </div>
+        </div>
+
+        <div class="category" *ngIf="p.category?.name">
+          {{ p.category?.name }}
+        </div>
+
+        <p class="desc" [title]="p.description">
+          {{ p.description || 'Sin descripción' }}
+        </p>
+
+        <div class="card-actions">
+          <button class="btn btn-primary" [disabled]="p.stock === 0">
+            Agregar
+          </button>
+          <a class="btn btn-ghost" [routerLink]="['/producto', p.id]">Ver</a>
+        </div>
+      </div>
+    </article>
   </div>
 
-  <ng-template #noUsers>
-    <p>No se encontraron usuarios.</p>
+  <ng-template #noProduct>
+    <p class="no-data">No se encontraron productos.</p>
   </ng-template>
 </div>

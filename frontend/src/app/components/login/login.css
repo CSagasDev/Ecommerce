@@ -122,6 +122,18 @@ button[type="submit"]:disabled {
     color: #3d43b3;
 }
 
+.error-message {
+    margin-top: 12px;
+    padding: 8px;
+    color: #fff;
+    background-color: #e74c3c;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
 /* Animación */
 @keyframes fadeIn {
     from {

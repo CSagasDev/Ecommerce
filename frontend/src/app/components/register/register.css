@@ -124,6 +124,17 @@ button[type="submit"]:disabled {
     color: #0f3d6c;
 }
 
+.error-message {
+    margin-top: 12px;
+    padding: 8px;
+    color: #fff;
+    background-color: #e74c3c;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
 /* Animación de entrada */
 @keyframes slideIn {
     from {

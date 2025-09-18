@@ -18,18 +18,19 @@ export default class Register {
     password: '',
   };
 
+  errorMessage: string = '';
+
   constructor(private authService: AuthService, private router: Router) {}
   register() {
     if (!this.user.user || !this.user.email || !this.user.password) {
-      alert('Por favor, complete todos los campos.');
+      this.errorMessage = 'Por favor, complete todos los campos.';
+
       return;
     }
     this.authService
       .register(this.user.user, this.user.email, this.user.password)
       .subscribe({
         next: (response) => {
-          localStorage.setItem('token', response.accessToken);
-          console.log('Register successful:', response);
           this.router.navigate(['/login']);
         },
         error: (error) => {

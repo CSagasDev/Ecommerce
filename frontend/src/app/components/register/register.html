@@ -35,9 +35,9 @@
         />
       </div>
 
-      <button type="submit" [disabled]="registerForm.invalid">
-        Registrarse
-      </button>
+      <button type="submit">Registrarse</button>
+
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </form>
 
     <p class="login-text">
